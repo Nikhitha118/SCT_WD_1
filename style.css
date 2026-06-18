@@ -1,0 +1,290 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI', sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#f8fafc;
+color:#111;
+perspective:1000px;
+}
+
+/* PROGRESS BAR */
+#progress-bar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+width:0%;
+background:linear-gradient(90deg,#6d28d9,#ec4899,#facc15);
+z-index:9999;
+}
+
+/* LOADER */
+#loader{
+position:fixed;
+width:100%;
+height:100vh;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+transition:opacity 0.5s ease;
+}
+
+#loader.hide{
+opacity:0;
+visibility:hidden;
+}
+
+.spinner{
+width:50px;
+height:50px;
+border:5px solid #ddd;
+border-top:5px solid #6d28d9;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+/* NAVBAR */
+#navbar{
+position:fixed;
+top:0;
+width:100%;
+padding:15px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(30,58,138,0.85);
+backdrop-filter:blur(10px);
+z-index:1000;
+transition:0.3s;
+}
+
+#navbar.scrolled{
+background:#1e3a8a;
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+.logo{
+color:white;
+font-size:24px;
+font-weight:700;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+}
+
+.nav-links li{
+margin-left:25px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+padding:8px 14px;
+border-radius:8px;
+transition:0.3s;
+position:relative;
+}
+
+.nav-links a:hover{
+background:#facc15;
+color:#000;
+}
+
+/* SECTIONS */
+.section{
+min-height:100vh;
+padding:120px 40px;
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+transition:0.8s ease;
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* HERO PARALLAX */
+.home{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+position:relative;
+
+background-image:url("https://images.unsplash.com/photo-1501785888041-af3ef285b470");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+.home::before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.4);
+}
+
+.hero-content{
+position:relative;
+z-index:1;
+}
+
+.home h1{
+font-size:4rem;
+}
+
+.home p{
+font-size:1.2rem;
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 30px;
+background:white;
+color:#6d28d9;
+border-radius:30px;
+font-weight:600;
+box-shadow:0 8px 0 #4c1d95;
+}
+
+.btn:active{
+transform:translateY(4px);
+}
+
+/* SECTION COLORS */
+#about{background:linear-gradient(135deg,#fef3c7,#fff);}
+#services{background:linear-gradient(135deg,#e0f2fe,#fff);}
+#portfolio{background:linear-gradient(135deg,#f3e8ff,#fff);}
+#contact{background:linear-gradient(135deg,#dcfce7,#fff);}
+
+/* HEADINGS */
+h2{
+font-size:2.5rem;
+margin-bottom:20px;
+}
+
+.section-text{
+max-width:700px;
+margin:0 auto 30px;
+color:#555;
+line-height:1.6;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+perspective:1200px;
+}
+
+.card{
+width:280px;
+background:white;
+padding:25px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+animation:floatCard 6s infinite ease-in-out;
+transition:0.4s;
+}
+
+.card:nth-child(1){animation-delay:0s;}
+.card:nth-child(2){animation-delay:1s;}
+.card:nth-child(3){animation-delay:2s;}
+
+@keyframes floatCard{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+.card:hover{
+transform:scale(1.08) rotateY(10deg);
+}
+
+/* CONTACT */
+.contact-box{
+background:white;
+padding:30px;
+width:420px;
+margin:auto;
+border-radius:16px;
+}
+
+/* FOOTER */
+footer{
+background:#0f172a;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* MOBILE */
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+#navbar{
+flex-direction:column;
+padding:15px;
+}
+
+.nav-links{
+display:none;
+flex-direction:column;
+background:#1e3a8a;
+position:absolute;
+top:70px;
+right:0;
+width:200px;
+padding:20px;
+}
+
+.nav-links.show{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.home h1{
+font-size:2.5rem;
+}
+
+.card{
+width:100%;
+max-width:320px;
+}
+
+.home{
+background-attachment:scroll;
+}
+}
